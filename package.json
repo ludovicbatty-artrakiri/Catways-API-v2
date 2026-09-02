@@ -1,0 +1,30 @@
+{
+  "name": "catway-api",
+  "version": "1.0.0",
+  "description": "API de gestion des réservations de catways - Port de Plaisance Russell",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "import:catways": "mongoimport --jsonArray --db catway-db --collection catways --file data/catways.json",
+    "import:reservations": "mongoimport --jsonArray --db catway-db --collection reservations --file data/reservations.json"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.0",
+    "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
