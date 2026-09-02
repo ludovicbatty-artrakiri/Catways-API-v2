@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('partials/head', { scripts: ['/js/users.js'], noCache: true }) %>
+<body>
+  <%- include('partials/menu') %>
+
+  <main class="content">
+    <h1>Gestion des utilisateurs</h1>
+
+    <section class="form-box">
+      <h2>Ajouter un utilisateur</h2>
+      <form id="createUserForm">
+        <label>Nom d'utilisateur</label>
+        <input type="text" name="username" required />
+        <label>Email</label>
+        <input type="email" name="email" required />
+        <label>Mot de passe</label>
+        <input type="password" name="password" minlength="8" required />
+        <button type="submit">Créer</button>
+        <p id="createError" class="error"></p>
+      </form>
+    </section>
+
+    <h2>Liste des utilisateurs</h2>
+    <table>
+      <thead>
+        <tr><th>Nom</th><th>Email</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="usersBody">
+        <% users.forEach(u => { %>
+          <tr data-email="<%= u.email %>">
+            <td><%= u.username %></td>
+            <td><%= u.email %></td>
+            <td><button class="deleteBtn">Supprimer</button></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
