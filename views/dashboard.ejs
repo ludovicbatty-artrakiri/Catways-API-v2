@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('partials/head', { scripts: ['/js/dashboard.js'], noCache: true }) %>
+<body>
+  <%- include('partials/menu') %>
+
+  <main class="content">
+    <h1>Tableau de bord</h1>
+    <p><strong><%= user.username %></strong> — <%= user.email %></p>
+    <p>Date du jour : <%= today %></p>
+
+    <h2>Réservations en cours</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Catway</th>
+          <th>Client</th>
+          <th>Bateau</th>
+          <th>Début</th>
+          <th>Fin</th>
+        </tr>
+      </thead>
+      <tbody id="reservationsBody">
+        <tr><td colspan="5">Chargement...</td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
