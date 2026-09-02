@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('partials/head', { scripts: ['/js/reservations.js'], noCache: true }) %>
+<body>
+  <%- include('partials/menu') %>
+
+  <main class="content">
+    <h1>Gestion des réservations</h1>
+
+    <section class="form-box">
+      <h2>Ajouter une réservation</h2>
+      <form id="createReservationForm">
+        <label>Catway</label>
+        <select name="catwayNumber" required>
+          <% catways.forEach(c => { %>
+            <option value="<%= c.catwayNumber %>"><%= c.catwayNumber %> (<%= c.catwayType %>)</option>
+          <% }) %>
+        </select>
+        <label>Client</label>
+        <input type="text" name="clientName" required />
+        <label>Bateau</label>
+        <input type="text" name="boatName" required />
+        <label>Début</label>
+        <input type="date" name="startDate" required />
+        <label>Fin</label>
+        <input type="date" name="endDate" required />
+        <button type="submit">Créer</button>
+        <p id="createError" class="error"></p>
+      </form>
+    </section>
+
+    <h2>Liste des réservations</h2>
+    <table>
+      <thead>
+        <tr><th>Catway</th><th>Client</th><th>Bateau</th><th>Début</th><th>Fin</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="reservationsBody">
+        <% reservations.forEach(r => { %>
+          <tr data-catway="<%= r.catwayNumber %>" data-id="<%= r._id %>">
+            <td><%= r.catwayNumber %></td>
+            <td><%= r.clientName %></td>
+            <td><%= r.boatName %></td>
+            <td><%= new Date(r.startDate).toISOString().slice(0,10) %></td>
+            <td><%= new Date(r.endDate).toISOString().slice(0,10) %></td>
+            <td><button class="deleteBtn">Supprimer</button></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

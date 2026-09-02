@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('partials/head', { scripts: ['/js/login.js'] }) %>
+<body>
+  <main class="home">
+    <h1>Port de Plaisance Russell</h1>
+    <p class="tagline">
+      Application de gestion des réservations de catways pour la capitainerie.
+      Réservez, suivez et gérez les appontements en toute simplicité.
+    </p>
+
+    <section class="login-box">
+      <h2>Connexion</h2>
+      <form id="loginForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Se connecter</button>
+        <p id="loginError" class="error"></p>
+      </form>
+    </section>
+
+    <p><a href="/api-docs" target="_blank">Consulter la documentation de l'API</a></p>
+  </main>
+</body>
+</html>
