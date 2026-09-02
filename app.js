@@ -10,6 +10,7 @@ const userRoutes = require('./routes/userRoutes');
 const catwayRoutes = require('./routes/catwayRoutes');
 const apiRoutes = require('./routes/apiRoutes');
 const viewRoutes = require('./routes/viewRoutes');
+const setupRoutes = require('./routes/setupRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 
 /**
@@ -41,6 +42,7 @@ app.use('/', authRoutes); // POST /login, GET /logout
 app.use('/users', userRoutes); // /users, /users/:email
 app.use('/catways', catwayRoutes); // /catways, /catways/:id, /catways/:id/reservations...
 app.use('/api', apiRoutes); // /api/me, /api/reservations, /api/reservations/current (usage frontend)
+app.use('/', setupRoutes); // /setup-admin (temporaire, protégé par secret)
 
 // 404
 app.use((req, res) => {
